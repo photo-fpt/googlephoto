@@ -24,7 +24,7 @@
 
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-            <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Create">add_box</a>
+            <a class="material-icons mdc-top-app-bar__navigation-icon" aria-label="Create" onclick="myFunction()">add_box</a>
             <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
             <?= $form->field($model, 'image[]')->fileInput(['multiple'=>true,'accept'=>'image/*',
                 'onchange'=>'this.form.submit()','style'=>'display:none']) ?>
@@ -34,6 +34,40 @@
         </section>
     </div>
 </header>
+<div class="mdc-menu mdc-menu-surface">
+    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Trình chiếu</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Tải xuống</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Xoay</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Thêm vào album</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Thêm vào album được chia sẽ</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__text">Lưu trữ</span>
+        </li>
+    </ul>
+</div>
+<!--end menu-->
+<script type="text/javascript">
+    const MDCMenu = mdc.menu.MDCMenu;
+    const menu = new MDCMenu(document.querySelector('.mdc-menu'));
+    menu.setFixedPosition(true);
+    menu.hoistMenuToBody(); // Not required if the menu is already positioned on the body
+    menu.setAbsolutePosition(1000,50); //tạm thời set cứng
+    menu.open = false;
+    function myFunction(){
+        menu.open = !menu.open;
+    }
+</script>
 <!--<script type="text/javascript">-->
 <!--    window.onload = function () {-->
 <!--        var fileupload = document.getElementById("FileUpload");-->
